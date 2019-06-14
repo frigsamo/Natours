@@ -1,0 +1,64 @@
+
+.btn {
+    /* El botton tiene la sudo class link por defect so este es el estilo innicial y el estilo para cuando el botton este visitado */
+&:link, &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display:inline-block;
+    border-radius: 10rem;
+    padding: 1.5rem 4rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem;
+}
+&:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+    &::after {
+        transform: scaleX(1.4)  scaleY(1.6);
+        opacity: 0;
+    }
+}
+
+&:active {
+    transform: translateY(-.1rem);
+    box-shadow: 0 05rem 1rem rgba($color-black, .2);
+}
+
+&--white {
+    background-color: $color-white;
+    color: $color-gray;
+
+    &::after {
+        background-color: $color-white;
+    }
+   
+}
+
+&::after {
+    /* hay que poner content aunque se vacio para que el elemento se pueda var display es obligatoria  */
+   content: ''; 
+   display: inline-block;
+   /* El seudo elemento es basicamente un hijo del elemento pero en la parte de atras con height and width 100% estamosdiciendo que tome el tamanno de elemento padra;; */
+   height: 100%;
+   width: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+    border-radius: 10rem;
+    z-index: -1;
+    transition: all 0.5s;
+   
+}
+
+
+
+
+
+&--animated {
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    animation: moveInBottom 1 ease-out 2s;
+    animation-fill-mode: backwards;
+}
+}

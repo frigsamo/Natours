@@ -1,0 +1,149 @@
+/* Este es el selector universar para hacer un reset del browser se agregan::after y ::befor para los seudo elements sean reiniciados tambien */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  /* box sizing no tiene herencia de esta manera poniendo inherit podemos forzarlos a que herede  */
+  box-sizing: inherit; }
+
+html {
+  /* Se declara este font size para usra rem en los pixeles porque 1rem = font-size of the root element se declara en 10 para hacer mas 
+    facil los calculos de esta manera cuando se vaya a hacer el response solo tendriamos que cambiar el tamanno de la letra en los mediaqueries */
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  /* 60% {
+        transform: rotate(180deg);
+    } */
+  80% {
+    opacity: 0.8;
+    transform: translateX(1.5rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px); }
+  80% {
+    opacity: 0.8;
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translateX(0); } }
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(4rem); }
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+body {
+  font-family: 'Lato',sans-serif;
+  font-weight: 400;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box; }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* Cuando la animacion termina se mueve un poquito hacia arriva de esta manera se soluciona chequear luego; */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    /* Otras propiedas para las animaciones que puedo utilizar;
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+         animation-timing-function: ease-in; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.38rem;
+    /* Esta es la forma conrta para poner las animaciones sin tener que hacerlo como en heading-primary-main */
+    animation: moveInRight 3s ease-out; }
+
+.btn {
+  /* El botton tiene la sudo class link por defect so este es el estilo innicial y el estilo para cuando el botton este visitado */ }
+  .btn:link, .btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10rem;
+    padding: 1.5rem 4rem;
+    transition: all .2s;
+    position: relative;
+    font-size: 1.6rem; }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+    .btn:hover::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0; }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 5rem 1rem rgba(0, 0, 0, 0.2); }
+  .btn--white {
+    background-color: #fff;
+    color: #777; }
+    .btn--white::after {
+      background-color: #fff; }
+  .btn::after {
+    /* hay que poner content aunque se vacio para que el elemento se pueda var display es obligatoria  */
+    content: '';
+    display: inline-block;
+    /* El seudo elemento es basicamente un hijo del elemento pero en la parte de atras con height and width 100% estamosdiciendo que tome el tamanno de elemento padra;; */
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 10rem;
+    z-index: -1;
+    transition: all 0.5s; }
+  .btn--animated {
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+    animation: moveInBottom 1 ease-out 2s;
+    animation-fill-mode: backwards; }
+
+.header {
+  height: 95vh;
+  /* De esta manera puedo super poner un backgroun sobre otro y con un gradiente */
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.705), rgba(40, 180, 133, 0.705)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  /* Para hacer que la imagen se vea como un poligono  */
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    /* Esta posicion es absoluta al componente padre es decir el header y movemos 50% a la izquierda y 50% hacia abajo */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* Con esta propiedad se mueve el elemento respecto a su posicion actual */
+    transform: translate(-50%, -70%);
+    text-align: center; }

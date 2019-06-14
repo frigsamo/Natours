@@ -1,0 +1,33 @@
+.header {
+    height: 95vh;
+    /* De esta manera puedo super poner un backgroun sobre otro y con un gradiente */
+    background-image: linear-gradient(to right bottom,rgba($color-primary, 0.705),rgba($color-primary-datk, 0.705) ),  url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    /* Para hacer que la imagen se vea como un poligono  */
+    clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
+    position: relative;
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem;
+        left: 4rem;
+    }
+
+        
+    &__logo {
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        /* Esta posicion es absoluta al componente padre es decir el header y movemos 50% a la izquierda y 50% hacia abajo */
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        /* Con esta propiedad se mueve el elemento respecto a su posicion actual */
+        transform: translate(-50%, -70%);
+        text-align: center;
+        
+    }
+    
+}

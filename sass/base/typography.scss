@@ -1,0 +1,45 @@
+@import '../abstracts/variables';
+
+body {
+    font-family: 'Lato',sans-serif;
+    font-weight: 400;
+    /* font-size: 16px; */
+    line-height: 1.7;
+    color: $color-gray;
+    padding: 3rem;
+    box-sizing: border-box;
+}
+
+
+.heading-primary {
+    color: $color-white;
+    text-transform: uppercase;
+    /* Cuando la animacion termina se mueve un poquito hacia arriva de esta manera se soluciona chequear luego; */
+    backface-visibility: hidden;
+    margin-bottom: 6rem;
+
+    &--main {
+        display: block;
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 3.5rem;
+        animation-name: moveInLeft;
+        animation-duration: 3s;
+       animation-timing-function: ease-out;
+    
+        /* Otras propiedas para las animaciones que puedo utilizar;
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+         animation-timing-function: ease-in; */
+    
+    }
+    
+    &--sub {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: 1.38rem;
+        /* Esta es la forma conrta para poner las animaciones sin tener que hacerlo como en heading-primary-main */
+        animation: moveInRight 3s ease-out;
+    }   
+}

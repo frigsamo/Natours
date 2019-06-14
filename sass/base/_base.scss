@@ -1,0 +1,19 @@
+
+/* Este es el selector universar para hacer un reset del browser se agregan::after y ::befor para los seudo elements sean reiniciados tambien */
+*,*::before,*::after {
+    margin: 0;
+    padding: 0;
+    /* box sizing no tiene herencia de esta manera poniendo inherit podemos forzarlos a que herede  */
+    box-sizing: inherit;
+}
+
+html {
+    /* Se declara este font size para usra rem en los pixeles porque 1rem = font-size of the root element se declara en 10 para hacer mas 
+    facil los calculos de esta manera cuando se vaya a hacer el response solo tendriamos que cambiar el tamanno de la letra en los mediaqueries */
+    font-size: 62.5%;
+}
+
+body {
+    
+    box-sizing: border-box;
+}
