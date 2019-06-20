@@ -1,0 +1,141 @@
+.card {
+//FUNTIONALITY
+
+    //Con transform rotate la carta gira pero no se ve bien tienes que poner la propiedad perpective en el componente padre donde esta el elemento
+    //con un numero relativamente grande de pixeles como 105rem
+    perspective: 150rem;
+    //Esto es para que funcione bien en mizilla;
+    -moz-perspective: 150rem;
+    position: relative;
+    //cuando se utiliza position absolute el elemento se va del flow de la pag con floats se utiliza clearfix pero aca solo se le da el mismo hight 
+    //al alemento del elemento padre si no se hace eso colapsa y el perspective colaza
+    height: 40rem;
+   
+
+    &__side {
+        //Cuando se agrega el background-blend-mode:screen la imagen overflow el card que es el que tiene que border-radius so se pone esta propideda para que no lo haga y se vea redondeado
+    overflow: hidden;
+    height: 50rem;
+    transition: all 2s ease;
+    //Este position es para poner los dos cards uno sobre otro
+    position: absolute;
+    top: 0;
+    left:0;
+    width: 100%;
+    //sin no se hace esto el elemento de atras se ve cuando gira 
+    backface-visibility: hidden;
+    border-radius: .4rem;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .2); 
+
+    &--front{
+       &-1 {
+        background-color: $color-white;
+        
+       }
+    }
+    //La cara de atras va a estar rotada 180 grados cuando se hace el hover abajo se gira una y la otra;
+    &--back {
+        
+        transform: rotateY(-180deg);
+      
+
+        &-1 {
+            background-color: $color-white;
+            background-image: linear-gradient(to right bottom, $color-secondary-dark, $color-secondary-light);
+        }
+    }
+    };
+
+
+
+    &:hover &__side--front {
+        transform: rotateY(180deg);
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);
+    };
+
+    //FRONT SIDE STYLE
+
+    &__picture {
+        background-size: cover;
+        //Para que funcione en todos los browsers;
+        -webkit-clip-path:polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        //Esta es otra manera de hacer que se vea la imagen de fondo con el gradiente ecima;
+        background-blend-mode:screen;
+        &--1{
+            background-image: linear-gradient(to right bottom, $color-secondary-dark, $color-secondary-light), url( '../img/nat-5.jpg');
+            height: 23rem;
+        }
+    }
+
+    &__heading {
+        font-size: 2.8rem;
+        font-weight: 300;
+        text-transform: uppercase;
+        color: $color-white;
+        position: absolute;
+        text-align: right;
+        right: 2rem;
+        top: 13rem;
+        width: 75%;
+
+    }
+
+    &__heading-span{
+        padding: .7rem 1.5rem;
+        //Cuando se hace el paddin anterior al texto no funciona para las dos palabras porque funciona como una sola linea de texto
+        //la propiedadd box-decoration-break hace que funciones como si fueran dos bloques diferentes -webkit es para que funcione en chrome porque aun no esta soportado
+        -webkit-box-decoration-break: clone;
+        &--1 {
+            background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),rgba($color-secondary-dark, .85));
+           
+        }
+    }
+    &__details {
+        ul {
+            padding: 1rem ;
+            list-style: none;
+            width: 75%;
+            margin: 0 auto;
+            li {
+                text-align: center;
+                padding: 1rem;
+                font-size: 1.5rem;
+                
+                &:not(:last-child){
+                    border-bottom: 2px solid $color-gray-light-2;
+                }
+              
+            }
+        }
+    }
+
+    //FRONT SIDE STYLE
+
+    &__cta {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 90%;
+      text-align: center;
+    }
+
+    &__price--box {
+        
+        color: $color-white;
+        margin-bottom: 8rem;
+    }
+    &__price--only {
+    font-size: 1.5rem;
+    
+    text-transform: uppercase;
+    }
+    &__price--value {
+      font-size: 6rem;
+      font-weight: 300;
+    }
+}
