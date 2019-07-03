@@ -1,6 +1,7 @@
 
 .btn {
-    /* El botton tiene la sudo class link por defect so este es el estilo innicial y el estilo para cuando el botton este visitado */
+
+ &,   /* El botton tiene la sudo class link por defect so este es el estilo innicial y el estilo para cuando el botton este visitado */
 &:link, &:visited {
     text-transform: uppercase;
     text-decoration: none;
@@ -10,6 +11,7 @@
     transition: all .2s;
     position: relative;
     font-size:$default-font-size;
+    border: none;
 }
 &:hover {
     transform: translateY(-0.3rem);
@@ -21,7 +23,8 @@
     }
 }
 
-&:active {
+&:active,&:focus {
+    outline: none;
     transform: translateY(-.1rem);
     box-shadow: 0 05rem 1rem rgba($color-black, .2);
 }
@@ -33,9 +36,15 @@
     &::after {
         background-color: $color-white;
     }
+}
 
-    
-   
+&--green {
+    background-color: $color-primary;
+     color: $color-white;
+
+     &::after {
+        background-color: $color-white;
+    }
 }
 
 &::after {

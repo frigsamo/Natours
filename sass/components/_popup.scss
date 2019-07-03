@@ -1,0 +1,100 @@
+.popup {
+    background-color:rgba( $color-black, .8);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    
+    //para ocultar algo, si solo das opacity no se ve pero sigue ahi con visivilite hidden se esconde pero no se puede trabajar con el so se ponen las dos
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+
+    //Cuando se clickea el boton con el id especificado en el componente que queremos utilizar se activa el target del elemento so podemos cambiar las propiedades
+    &:target {
+       opacity: 1;
+       visibility: visible; 
+    }
+    &:target &__content {
+        //Aqui se selecciona el targer y el elemento que esta dentro de el.
+        opacity: 1;
+        transform: translate(-50%,-50%) scale(1);
+
+    }
+
+    &__content{
+       @include absCenter;
+        width: 75%;
+        box-shadow: 0 2rem 4rem rgba( $color-black, .2);
+        background-color: white;
+        border-radius: 3px;
+        //utilizar esto en lugar de float 
+        display: table;
+        //la foto cubre el border radius so de esta manera se quita
+        overflow: hidden;
+        opacity: 0;
+        //si se pone asi no va a funcionar porque solo puede haber un trasfor en el bloque de codigo ya existe uno proveniente del mixim hay que ponerlos ambos en el mismo bloque de codigo
+        transform:translate(-50%, -50%) scale(0);
+        transition: all .5s .2s;
+    }
+
+    &__left {
+     width: 33.3333333%;
+     display: table-cell;
+    }
+
+    &__right {
+       width: 66.6666667%;
+      display: table-cell;
+      //porpiedad para poner el contenido en el centro
+
+      vertical-align: middle;
+      padding: 3rem 5rem;
+    }
+
+    &__img {
+       width: 100%;
+       display: block;
+    }
+    &__text {
+       font-size: 1.4rem;
+       margin-bottom: 4rem;
+        //Esto es para dividir un texto en columnas
+       column-count: 2;
+       -moz-column-count: 2;
+       //Es espacio que se quiere dejar entre columnas
+       -moz-column-gap: auto;
+       column-gap:4rem;//1em = 14px porque 1 em es el tamanno de el font size
+       //Esto es para hacer una lines entre las columnas
+       column-rule: 1px solid $color-gray-light-1;
+       //Para dividir las palabras automaticamente hay que especificar el elnguaje para que funcione en el html
+       hyphens: auto;
+
+       -moz-hyphens: auto;
+       -ms-hyphens:auto;
+       -webkit-hyphens: auto;
+       
+
+
+    }
+
+    &__close {
+        &:link, &:visited {
+            color: $color-gray-darck-3;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all .3s;
+            line-height: 1;
+            font-size: 3rem;
+
+        }
+        &:hover {
+           color: $color-primary;
+        }
+    }
+}

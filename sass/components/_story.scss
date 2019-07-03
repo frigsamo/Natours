@@ -1,0 +1,64 @@
+.story {
+    width: 75%;
+   
+    margin: 0 auto;
+    box-shadow: 0 1rem 6rem rgba($color-black, 0.8);
+    background-color: rgba($color-white, .6);
+    padding: 5rem;
+    border-radius: 5rem;
+    clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+    font-size: $default-font-size;
+    padding-left: 9rem;
+   
+    
+    
+    &__chape {
+        width: 15rem;
+        height: 15rem;
+       
+        float: left;
+        //Esto es para hacer como los elemetos van a flotar alrededor del elemento el elemento tiene que estar flaot before y tiene que tenr hight and width
+        shape-outside: circle(50% at 50% 50%);
+        //Esto es para que funcione en safari
+        -webkit-shape-outside:  circle(50% at 50% 50%); 
+        
+        clip-path: circle(50% at 50% 50%);
+        transform: translate(-3rem, -.8rem);
+        position: relative;
+    }
+
+    &__img {
+        height: 100%;
+        transform: translate(-20%) scale(1.4) ;
+    }
+    &__caption {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, 20%);
+        color:$color-white;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.7rem;
+        opacity: 0;
+        transition: all 1s ease-in-out;
+        //Parra arreglar algunos glichs buscar bien la documentacion;
+        backface-visibility: hidden;
+
+    }
+
+    
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%,-50%);
+    }
+
+    &:hover &__img {
+        
+       transform: translate(-20%) scale(1) ;
+       //para aplicar filtros a la imagen
+        filter: blur(3px) brightness(80%);
+    }
+    
+
+}

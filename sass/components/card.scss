@@ -40,8 +40,18 @@
       
 
         &-1 {
-            background-color: $color-white;
+            //background-color: $color-white;
             background-image: linear-gradient(to right bottom, $color-secondary-dark, $color-secondary-light);
+        }
+
+        &-2 {
+            //background-color: $color-white;
+            background-image: linear-gradient(to right bottom, $color-primary-dark, $color-primary-light);
+        }
+
+        &-3 {
+            //background-color: $color-white;
+            background-image: linear-gradient(to right bottom, $color-tertiary-dark, $color-tertiary-light);
         }
     }
     };
@@ -63,10 +73,21 @@
         //Para que funcione en todos los browsers;
         -webkit-clip-path:polygon(0 0, 100% 0, 100% 85%, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        // border-top-left-radius: 3px;
+        // border-top-right-radius: 3px;
+
         //Esta es otra manera de hacer que se vea la imagen de fondo con el gradiente ecima;
         background-blend-mode:screen;
         &--1{
             background-image: linear-gradient(to right bottom, $color-secondary-dark, $color-secondary-light), url( '../img/nat-5.jpg');
+            height: 23rem;
+        }
+        &--2{
+            background-image: linear-gradient(to right bottom, $color-primary-dark, $color-primary-light), url( '../img/nat-6.jpg');
+            height: 23rem;
+        }
+        &--3{
+            background-image: linear-gradient(to right bottom, $color-tertiary-dark, $color-tertiary-light), url( '../img/nat-7.jpg');
             height: 23rem;
         }
     }
@@ -93,6 +114,14 @@
             background-image: linear-gradient(to right bottom, rgba($color-secondary-light, .85),rgba($color-secondary-dark, .85));
            
         }
+        &--2 {
+            background-image: linear-gradient(to right bottom, rgba($color-primary-light, .85),rgba($color-primary-dark, .85));
+           
+        }
+        &--3 {
+            background-image: linear-gradient(to right bottom, rgba($color-tertiary-light, .85),rgba($color-tertiary-dark, .85));
+           
+        }
     }
     &__details {
         ul {
@@ -116,10 +145,11 @@
     //FRONT SIDE STYLE
 
     &__cta {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%,-50%);
+    @include absCenter;
+    //   position: absolute;
+    //   top: 50%;
+    //   left: 50%;
+    //   transform: translate(-50%,-50%);
       width: 90%;
       text-align: center;
     }

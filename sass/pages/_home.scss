@@ -20,5 +20,36 @@
 
 .section-tours {
     background-color: $color-gray-light-1;
-    padding: 20rem;
+    padding: 20rem 0;
+}
+
+.section-stories {
+    
+    padding: 20rem 0;
+    background-color: rgba($color-gray-light-1, .5);
+    position: relative;
+    z-index: 1;
+}
+
+.section-book {
+    padding: 20rem 0;
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+}
+
+.book {
+    //Se puede hacer este efecto poniendo en lugar de to right bottom o cosas asi en deg y despues se dice que color queieres en cada porciento
+    background-image: linear-gradient(105deg,
+    rgba($color-white, 0.8) 0%,
+    rgba($color-white, 0.8) 50%,
+    transparent 50%),  url(../img/nat-10.jpg) ;
+    // Esto es lo mismo que decir cover;
+    background-size: 100%;
+    height: 50vh;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba($color-black, .7);
+
+    &__form {
+        width: 50%;
+        padding: 6rem;
+    }
 }

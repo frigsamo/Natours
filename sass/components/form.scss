@@ -1,0 +1,118 @@
+.form {
+    
+    &__group:not(:last-child) {
+        margin-bottom: 2rem;
+    }
+    &__input {
+        font-size: 1.5rem;
+        // //En los form no se hereda de los comoponentes padres directamente so hay que ponerlos explicitamente
+        font-family: inherit;
+        color: inherit;
+        padding: 1.5rem 2rem;
+        border-radius: 2px;
+         background-color: rgba($color-white, .75 );
+         border: none;
+         width: 90%;
+         border-bottom: .3rem solid transparent;
+         display: block;
+         transition: all .3s;
+
+        //con esta propiedad se puede trabajar soble el placeholder
+        &::-webkit-input-placeholder {
+             color: $color-gray-2;
+        }
+        
+
+        &:focus {
+            //En el caso de la etiqueta input trae un outline por defecto por eso se lo quitamos con esta propiedad;
+            outline: none;
+            box-shadow: 0 2rem 2rem rgba($color-black, .1);
+            border-bottom: .3rem solid $color-primary;
+        }
+
+        &:focus:invalid {
+            //Cuando esta focus pero invalid esto se define por el navegador en la etiqueta o algo asi profundizar
+             border-bottom: .3rem solid $color-secondary-dark;
+        }
+
+       
+    }
+
+    
+
+    &__label {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-left: 2rem;
+        margin-top: .7rem;
+        display: block;
+        transition: all .3s;
+        
+    }
+
+    //la propiedad placeholder-shown esta activa mientras no se escriba nada en el imput o textarea con el selector + se selecciona un elemento sibling
+    //por eso se esta diciendo que el &__label este invisible si hay mas loque en el medio se usa ~ pero siempre el elemento tiene que estar debajo de
+    //otra manera no funcionanara
+
+    &__input:placeholder-shown + &__label {
+        //opacity 0 esconde el elemento pero sigue ahi pero se puede dar estilo a ese elemento mierntras que visivility hidden lo quita pero no se puede dar estilo
+         opacity:0;
+       visibility: hidden;
+       //Cuando el placeholder-shown esta activo es decir no se ha escrito nada en le input se mueve 4 rem hacia arriba
+         transform: translateY(-4rem);
+
+    }
+
+    &__radio-group {
+       width: 49%;
+       display: inline-block; 
+    }
+
+    &__radio-input {
+        display: none;
+    }
+
+    &__radio-label {
+        font-size: $default-font-size;
+        cursor: pointer;
+        position: relative;
+        padding-left: 5rem;
+        
+    }
+    &__radio-button {
+        height: 3rem;
+        width: 3rem;
+        border: .5rem solid $color-primary;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        top: -.5rem;
+        left: 0;
+
+        //En lugar de crear el elemento en html se utiliza la seudoclase after para intorducir un elemento lugo
+        &::after {
+            //Siempre que se utiliza un seudo class hay que declarar la propiedad content
+            content: "";
+            display: block;
+            height: 1.1rem;
+            width: 1.1rem;
+            border: 1px solid $color-primary;
+            background-color: $color-primary;
+            border-radius: 50%;
+            @include absCenter;
+            // position: absolute;
+            // top: 50%;
+            // left: 50%;
+            // transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity .3s;
+            
+        }
+    }
+    //Los radio buttom y los checkbox tiene la propiedad checked con la que se trabaja aqui
+    //se selecciona el eleemento input checked...ver css selectors
+    &__radio-input:checked ~ &__radio-label  &__radio-button::after {
+        opacity: 1;
+        
+    }
+}
