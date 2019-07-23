@@ -12,6 +12,13 @@
     visibility: hidden;
     transition: all .3s;
 
+    //La propiedad backdrop-filter no funciona con chrome solo en safary de esta manera si el browser soporta la porpiedad se puede utilizar sino  se deja el estilo que se habia creado
+    @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+       -webkit-backdrop-filter: blur(10px);
+       backdrop-filter: blur(10px);
+       background-color: rgba( $color-black, .2);
+    }
+
     //Cuando se clickea el boton con el id especificado en el componente que queremos utilizar se activa el target del elemento so podemos cambiar las propiedades
     &:target {
        opacity: 1;
@@ -43,6 +50,10 @@
     &__left {
      width: 33.3333333%;
      display: table-cell;
+     
+     @include respond(tab-port){
+    align-content: flex-end;
+   }
     }
 
     &__right {
@@ -57,6 +68,11 @@
     &__img {
        width: 100%;
        display: block;
+
+       @include respond(tab-port){
+         height: auto;
+       }
+
     }
     &__text {
        font-size: 1.4rem;
@@ -97,4 +113,6 @@
            color: $color-primary;
         }
     }
+
+    
 }

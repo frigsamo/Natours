@@ -1,13 +1,36 @@
+
 .header {
-    height: 95vh;
+    height: 85vh;
     /* De esta manera puedo super poner un backgroun sobre otro y con un gradiente */
-    background-image: linear-gradient(to right bottom,rgba($color-primary, 0.705),rgba($color-primary-dark, 0.705) ),  url(../img/hero.jpg);
+    background-image: linear-gradient(to right bottom,rgba($color-primary, 0.705),rgba($color-primary-dark, 0.705) ),  url(../img/hero-small.jpg);
     background-size: cover;
     background-position: top;
     /* Para hacer que la imagen se vea como un poligono  */
-    --webkit-clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
+    -webkit-clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
     clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
     position: relative;
+
+    // //Pasa esto si el navegador a la version del navegador soporta clip-path and -webkit-clip-path
+    @supports( clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%)) or (-webkit-clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%)){
+        clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
+        -webkit-clip-path: polygon(0 0 , 100% 0, 100% 75%, 0 100%);
+        height: 95vh;
+    }
+
+    //Con este mediaquery usamos la imagen para una resolution de 192pdi y cuando width es menor que 600px
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+    //this is for working in safary.
+    (-webkit-mimn-device-pixel-ratio:2) and (min-width: 37.5em),
+    //Se aplica la primera condicion sino se aplica la segunda 
+    (min-width:125em){
+        background-image: linear-gradient(to right bottom,rgba($color-secondary-light, 0.705),rgba($color-secondary-dark, 0.705) ),  url(../img/hero.jpg);   
+    }
+
+    
+    @include respond(tab-port){//with < 900
+        --webkit-clip-path: polygon(0 0 , 100% 0, 100% 90%, 0 100%);
+        clip-path: polygon(0 0 , 100% 0, 100% 90%, 0 100%);
+     }
 
     &__logo-box {
         position: absolute;

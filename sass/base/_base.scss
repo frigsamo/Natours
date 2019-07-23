@@ -10,10 +10,39 @@
 html {
     /* Se declara este font size para usra rem en los pixeles porque 1rem = font-size of the root element se declara en 10 para hacer mas 
     facil los calculos de esta manera cuando se vaya a hacer el response solo tendriamos que cambiar el tamanno de la letra en los mediaqueries */
+    //1rem = 10px; 10px/16px =62.5%
     font-size: 62.5%;
+
+   //El orden de la media queries influye so la ultima toma preferencia si mas de una aplica 
+
+    @include respond(tab-land){//width < 1200
+        font-size: 56.25%; //1rem =9px 9/16
+     }
+    @include respond(tab-port){//with < 900
+       font-size: 50%; //1rem = 8px 8/16
+    }
+    
+    @include respond(big-desktop){ //with > 1800
+       font-size: 75%; //1rem =12px 12/16 = 75%
+    }
+    
+    @include respond(phone){//with < 600
+        font-size: 45%;
+     }
 }
 
 body {
-    
+    padding: 3rem;
     box-sizing: border-box;
+
+    //PAra quitar el borde blanco
+    @include respond(tab-port){//with < 900
+        font-size: 50%; //1rem = 8px 8/16
+        padding: 0;
+     }
+
+     ::selection {
+         background-color: $color-primary;
+         color: $color-white;
+     }
 }

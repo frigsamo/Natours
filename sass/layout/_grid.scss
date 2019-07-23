@@ -4,7 +4,18 @@
 
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port){//with < 900
+            margin-bottom: $gutter-vertical-small;
+         }
     }
+
+     
+    @include respond(tab-port) {
+        max-width: 100rem;
+        padding: 0 3rem;
+    }
+   
     
     @include clearfix;
     //De esta manera se pueden seleccionar varias atributos que cumplan con el requisito ^ se usa para seleccionar
@@ -15,7 +26,17 @@
         
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            
+            @include respond(tab-port) {
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
         }
+
+        @include respond(tab-port){//with < 900
+            width: 100% !important;
+          }
     }
 
     .col-1-of-2 {

@@ -4,7 +4,7 @@
     display: table;
     clear: both;
    } 
-}
+};
 
 @mixin absCenter {
    position: absolute;
@@ -12,4 +12,48 @@
    left: 50%;
    transform: translate(-50%, -50%);
 
+};
+
+//Media Query manager
+// 0 - 600px: Phone;
+// 600px - 900px: Table Potrait;
+// 900px - 1200px: Table Landscape;
+//1200px - 1800px: is where our normal styles applay
+// 1800 + : Big desktop
+
+//  $breackpoint arguments choises:
+//  - phone
+//  - tab-port
+//  - tab-land
+//  - big-desktop
+
+
+//ORder: base + typhografy > general loyaut + grid > page layout > components
+
+@mixin respond($breackpoint) {
+   @if $breackpoint == phone {
+      //Se pone only screen and para que solo se utilize la media query cuando esta en escrens pero si van a imprimir no
+      @media only screen and (max-width: 37.5em) {//En los media queries se utilizan em en este caso = 600px 1em = 16px
+         //Content nos permite pasar codigo a los mixings;
+         @content
+      }
+   };
+   @if $breackpoint == tab-port {
+      @media only screen and (max-width: 56.25em) {
+         //Content nos permite pasar codigo a los mixings;
+         @content
+      }
+   };
+   @if $breackpoint == tab-land {
+      @media only screen and (max-width: 75em ) {
+         //Content nos permite pasar codigo a los mixings;
+         @content
+      }
+   };
+   @if $breackpoint == big-desktop {
+      @media only screen and (min-width: 112.5em) {
+         //Content nos permite pasar codigo a los mixings;
+         @content
+      }
+   }
 }

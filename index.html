@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="css/icon-font.css">
 
     <title>Natours | Exciting tours for adventurous people</title>
+
+    <!-- Es importante poner esta linea en todas las pag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/style.css">
     <script src="main.js"></script>
@@ -72,10 +74,29 @@
 
                 <div class="col-1-of-2">
                     <div class="composition">
+                        <!-- Density and resolution Switching se especifica el width de la imagen en sizes para que el navegador escoja la mas conveniente -->
+                        <img srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                             sizes="(max-witdh: 900px) 20vw (max-witdh: 37.5em) 30vw, 300px"
+                             alt="Photo- 1"
+                             class="composition__photo composition__photo--p1"
+                             <!-- src="img/nat-1-large.jpg "> -->
+
+                        <img srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                             sizes="(max-witdh: 900px) 20vw (max-wit37.5em) 30vw, 300px"
+                             alt="Photo- 2"
+                             class="composition__photo composition__photo--p2"
+                             <!-- src="img/nat-2-large.jpg "> -->
+
+                        <img srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                             sizes="(max-witdh: 900px) 20vw (max-witdh: 37.5em) 30vw, 300px"
+                             alt="Photo- 3"
+                             class="composition__photo composition__photo--p3"
+                             <!-- src="img/nat-3-large.jpg "> -->
+
                         <!-- .composition>(img.composition__photo.composition__photo--p1)*3 -->
-                        <img src="img/nat-1-large.jpg " alt="Photo-1" class="composition__photo composition__photo--p1">
+                        <!-- <img src="img/nat-1-large.jpg " alt="Photo-1" class="composition__photo composition__photo--p1">
                         <img src="img/nat-2-large.jpg" alt="Photo-2" class="composition__photo composition__photo--p2">
-                        <img src="img/nat-3-large.jpg" alt="Photo-3" class="composition__photo composition__photo--p3">
+                        <img src="img/nat-3-large.jpg" alt="Photo-3" class="composition__photo composition__photo--p3"> -->
                     </div>
                 </div>
             </div>
@@ -325,8 +346,16 @@
 
     </main>
     <footer class="footer">
-        <div class="footer__logo-box u-center-text " >
-            <img src="img/logo-green-small-2x.png" alt="Full Logo" class="footer__logo ">
+        <div class="footer__logo-box u-center-text u-margin-bottom-medium " >
+
+            <picture class="footer__logo ">
+                <!-- Esto es llamado art direction obligamos al browser a utilizar las imagenes del source si  se cumple la mediaquery -->
+                <source srcset="img/logo-green-small-1x.png 1x, img/logo-green-small-2x.png 2x" alt="Full Logo" class="footer__logo "
+                media="(max-width: 37.5em)" >
+                 <!-- srcset se utiliza para escoger imagenes con direrente densidad para pantallas con hight or low resolution 2x y una 1x es como una descripcion -->
+                <img srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x" alt="Full Logo" class="footer__logo ">
+            </picture>
+           
         </div>
         <div class="row">
             <div class="col-1-of-2">

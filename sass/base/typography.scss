@@ -6,7 +6,7 @@ body {
     /* font-size: 16px; */
     line-height: 1.7;
     color: $color-gray;
-    padding: 3rem;
+    
     box-sizing: border-box;
 }
 
@@ -26,6 +26,12 @@ body {
         animation-name: moveInLeft;
         animation-duration: 3s;
        animation-timing-function: ease-out;
+
+       @include respond(phone){//with < 600
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 1.5rem;
+     }
     
         /* Otras propiedas para las animaciones que puedo utilizar;
         animation-delay: 3s;
@@ -41,6 +47,12 @@ body {
         letter-spacing: 1.38rem;
         /* Esta es la forma conrta para poner las animaciones sin tener que hacerlo como en heading-primary-main */
         animation: moveInRight 3s ease-out;
+
+        
+       @include respond(phone){//with < 600
+        
+        letter-spacing: .5rem;
+     }
     }   
 }
 
@@ -58,6 +70,17 @@ body {
     //Por alguna rason simpre que voy a usar el hover por ejemplo hay que especificar el transition, tengo que ver por que 
     transition: all .2s;
 
+    
+    @include respond(tab-port){//with < 900
+        font-size: 3rem;
+        letter-spacing: 0;
+     }
+    
+    @include respond(phone){//with < 600
+        font-size: 2.5rem;
+        letter-spacing: 0;
+     }
+
     &:hover {
         transform: skewY(-2deg) skewX(4deg) scale(1.1);
         text-shadow: 1rem 2rem 2rem rgba($color-black, .4)
@@ -69,6 +92,11 @@ body {
     font-size: $default-font-size;
     font-weight: 700;
     text-transform: uppercase;
+
+    @include respond(phone){//with < 600
+        font-size: 1rem;
+        letter-spacing: 0;
+     }
 }
 
 .parograph {
